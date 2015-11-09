@@ -12,6 +12,9 @@ import org.springframework.stereotype.Component;
 import java.util.HashMap;
 import java.util.Scanner;
 
+/**
+ * Component used for validate the entered commands
+ */
 @Component
 public class CommandValidator {
 

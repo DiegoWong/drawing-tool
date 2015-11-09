@@ -10,6 +10,10 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Scanner;
 
+/**
+ * Main class, it handles exceptions and dependency injection loading application context
+ *
+ */
 public class DrawingTool {
 
     private static Scanner scanner;

@@ -13,6 +13,10 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
+
+/**
+ * Component used for executing the commands in a given canvas
+ */
 @Component
 @Getter
 public class CommandExecutor {
@@ -105,13 +109,13 @@ public class CommandExecutor {
                 rightpoint.moveRight();
             }
 
-            fillLine(leftPoint, rightpoint, begginingChar, endingChar, startingNodes);
+            fillLineAndAddNodesToReplace(leftPoint, rightpoint, begginingChar, endingChar, startingNodes);
         }
 
     }
 
-    private void fillLine(Coordinate first, Coordinate last, char begginingChar, char endingChar,
-                          Queue<Coordinate> startingPoints){
+    private void fillLineAndAddNodesToReplace(Coordinate first, Coordinate last, char begginingChar, char endingChar,
+                                              Queue<Coordinate> startingPoints){
         Coordinate aux;
         if(first.getX() > last.getX() || first.getY() >last.getY()){
             aux = first;

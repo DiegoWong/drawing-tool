@@ -2,6 +2,10 @@ package com.app.model;
 
 import lombok.Getter;
 
+
+/**
+ * Enumartion that contains allowed commands and command formating
+ */
 @Getter
 public enum Command {
 	CREATE("C", "C \\d+ \\d+"),

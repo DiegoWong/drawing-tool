@@ -4,6 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * Class used for create coordinate to be used in a Canvas
+ */
 @Getter
 @Setter
 @AllArgsConstructor

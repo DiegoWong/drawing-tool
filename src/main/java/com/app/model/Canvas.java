@@ -4,6 +4,9 @@ import lombok.Getter;
 
 import java.util.Arrays;
 
+/**
+ * Model class to represent a canvas
+ */
 @Getter
 public class Canvas {
 
@@ -37,6 +40,11 @@ public class Canvas {
         return drawingArea[coordinate.getY()-1][coordinate.getX()-1];
     }
 
+    /**
+     * the toString method is overloaded to display then content of the canvas in a formatted way
+     *
+     * @return formated string to represent the canvas
+     */
     public String toString(){
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(line);

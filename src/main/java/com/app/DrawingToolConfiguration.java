@@ -7,6 +7,10 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.HashMap;
 
+
+/**
+ * Configuration class to manage beans
+ */
 @Configuration
 @ComponentScan("com.app")
 public class DrawingToolConfiguration {
