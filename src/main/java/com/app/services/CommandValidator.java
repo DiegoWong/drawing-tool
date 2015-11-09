@@ -85,8 +85,8 @@ public class CommandValidator {
     }
 
     private void validateCoordinates(Canvas canvas, Coordinate coordinate){
-        if(canvas.getWidth() < coordinate.getX() && canvas.getHeight() < coordinate.getY()
-                && coordinate.getX() > 0 && coordinate.getY() > 0){
+        if((canvas.getWidth() < coordinate.getX() && canvas.getHeight() < coordinate.getY())
+                || (coordinate.getX() <= 0 && coordinate.getY() <= 0)){
             throw new InvalidCoordinatesException("Invalid coordinates in command, " +
                     "the coordinates can't be bigger than the canvas size or begin with 0");
         }
