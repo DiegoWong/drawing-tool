@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.when;
@@ -65,6 +65,30 @@ public class CommandExecutorTest {
         assertEquals(commandExecutor.getCanvas().toString(), testDrawLine);
     }
 
+    public void testDrawLineBackwardsLine() throws Exception {
+        String testDrawLine =
+                "-----------------\n" +
+                "|               |\n" +
+                "|xxxxxxxxxxxxxxx|\n" +
+                "|               |\n" +
+                "|               |\n" +
+                "|               |\n" +
+                "|               |\n" +
+                "|               |\n" +
+                "|               |\n" +
+                "|               |\n" +
+                "|               |\n" +
+                "|               |\n" +
+                "|               |\n" +
+                "|               |\n" +
+                "|               |\n" +
+                "|               |\n" +
+                "-----------------\n";
+        commandExecutor.CreateCanvas("C 15 15");
+        commandExecutor.drawLine("L 15 2 1 2");
+        assertEquals(commandExecutor.getCanvas().toString(), testDrawLine);
+    }
+
     @Test
     public void testDrawRectangle() throws Exception {
         String testDrawRectangle =
@@ -87,6 +111,32 @@ public class CommandExecutorTest {
                 "-----------------\n";
         commandExecutor.CreateCanvas("C 15 15");
         commandExecutor.drawRectangle("R 3 3 12 12");
+        assertEquals(commandExecutor.getCanvas().toString(), testDrawRectangle);
+
+    }
+
+    @Test
+    public void testDrawBackwardsRectangle() throws Exception {
+        String testDrawRectangle =
+                "-----------------\n" +
+                "|               |\n" +
+                "|               |\n" +
+                "|  xxxxxxxxxx   |\n" +
+                "|  x        x   |\n" +
+                "|  x        x   |\n" +
+                "|  x        x   |\n" +
+                "|  x        x   |\n" +
+                "|  x        x   |\n" +
+                "|  x        x   |\n" +
+                "|  x        x   |\n" +
+                "|  x        x   |\n" +
+                "|  xxxxxxxxxx   |\n" +
+                "|               |\n" +
+                "|               |\n" +
+                "|               |\n" +
+                "-----------------\n";
+        commandExecutor.CreateCanvas("C 15 15");
+        commandExecutor.drawRectangle("R 12 12 3 3");
         assertEquals(commandExecutor.getCanvas().toString(), testDrawRectangle);
 
     }
