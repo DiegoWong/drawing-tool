@@ -1,10 +1,6 @@
 package com.app;
 
 import com.app.exceptions.InvalidCommandException;
-import com.app.exceptions.InvalidCommandFormatException;
-import com.app.exceptions.InvalidCoordinatesException;
-import com.app.exceptions.NoCanvasException;
-import com.app.model.Canvas;
 import com.app.model.Command;
 import com.app.services.CommandExecutor;
 import org.springframework.context.ApplicationContext;
@@ -12,7 +8,6 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 public class DrawingTool {

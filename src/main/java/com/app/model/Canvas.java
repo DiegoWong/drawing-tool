@@ -22,7 +22,7 @@ public class Canvas {
     }
 
     public void setXY(int x, int y, char fill){
-        drawingArea[y][x] = fill;
+        drawingArea[y-1][x-1] = fill;
     }
 
     public char getXY(int x, int y){
@@ -30,7 +30,7 @@ public class Canvas {
     }
 
     public void setCoordinate(Coordinate coordinate, char fill){
-        drawingArea[coordinate.getY()][coordinate.getX()] = fill;
+        drawingArea[coordinate.getY()-1][coordinate.getX()-1] = fill;
     }
 
     public char getCharFromCoordinate(Coordinate coordinate){

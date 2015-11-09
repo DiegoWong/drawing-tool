@@ -9,7 +9,9 @@ import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
 
 @Component
 @Getter
@@ -116,14 +118,14 @@ public class CommandExecutor {
             first = last;
             last = aux;
         }
-        for(int i = first.getX() - 1 ; i < last.getX(); i++ ){
-            for (int j = first.getY() - 1; j <last.getY(); j++){
+        for(int i = first.getX() ; i <= last.getX(); i++ ){
+            for (int j = first.getY(); j <=last.getY(); j++){
                 canvas.setXY(i, j, endingChar);
-                if(j+1 < canvas.getHeight() && canvas.getXY(i+1, j+2) == begginingChar){
-                    startingPoints.add(new Coordinate(i+1, j + 2));
+                if(j+1 <= canvas.getHeight() && canvas.getXY(i, j+1) == begginingChar){
+                    startingPoints.add(new Coordinate(i, j + 1));
                 }
-                if(j-1 >= 0 && canvas.getXY(i+1, j) == begginingChar){
-                    startingPoints.add(new Coordinate(i+1, j - 2));
+                if(j-1 > 0 && canvas.getXY(i, j-1) == begginingChar){
+                    startingPoints.add(new Coordinate(i, j - 1));
                 }
             }
         }
@@ -136,8 +138,8 @@ public class CommandExecutor {
             first = last;
             last = aux;
         }
-        for(int i = first.getX() - 1 ; i < last.getX(); i++ ){
-            for (int j = first.getY() - 1; j <last.getY(); j++){
+        for(int i = first.getX() ; i <= last.getX(); i++ ){
+            for (int j = first.getY(); j <=last.getY(); j++){
                 canvas.setXY(i, j, 'x');
             }
         }

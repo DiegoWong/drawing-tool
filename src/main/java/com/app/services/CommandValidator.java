@@ -89,9 +89,9 @@ public class CommandValidator {
     }
 
     private void validateDiagonalLine(Coordinate first, Coordinate last) throws InvalidCoordinatesException{
-        if((first.getX()!=last.getX() && first.getY()!=last.getY())){
+        if(!(first.getX()==last.getX() || first.getY()==last.getY())){
             throw new InvalidCoordinatesException("Invalid coordinates in command, " +
-                    "the coordinates shouldn't be bigger than the canvas size or begin with 0");
+                    "diagonal lines not valid for this version");
         }
     }
 }
