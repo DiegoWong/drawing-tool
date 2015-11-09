@@ -50,8 +50,8 @@ public class DrawingTool {
 						System.out.println(commandExecutor.getCanvas().toString());
 						break;
 					case QUIT:
-					System.exit(0);
-					break;
+						System.exit(0);
+						break;
 					default:
 						System.out.println("Invalid command");
 						break;
