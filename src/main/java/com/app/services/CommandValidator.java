@@ -43,7 +43,7 @@ public class CommandValidator {
         return true;
     }
 
-    public void validateDrawRectangleCommand(String command, Canvas canvas) {
+    public boolean validateDrawRectangleCommand(String command, Canvas canvas) {
         validateNoCanvas(canvas);
         validateCommandFormat(command);
         Scanner scanner = new Scanner(command);
@@ -52,16 +52,17 @@ public class CommandValidator {
         Coordinate last = getCoordinateFromScanner(scanner);
         validateCoordinates(canvas, first);
         validateCoordinates(canvas, last);
-
+        return true;
     }
 
-    public void validateFillCommand(String command, Canvas canvas) {
+    public boolean validateFillCommand(String command, Canvas canvas) {
         validateNoCanvas(canvas);
         validateCommandFormat(command);
         Scanner scanner = new Scanner(command);
         scanner.next();
         Coordinate coordinate = getCoordinateFromScanner(scanner);
         validateCoordinates(canvas, coordinate);
+        return true;
     }
 
     private Coordinate getCoordinateFromScanner(Scanner scanner){

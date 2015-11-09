@@ -1,6 +1,8 @@
 package com.app.services;
 
 import com.app.exceptions.InvalidCommandFormatException;
+import com.app.exceptions.InvalidCoordinatesException;
+import com.app.exceptions.NoCanvasException;
 import com.app.model.Canvas;
 import com.app.model.Command;
 import org.junit.Before;
@@ -45,13 +47,54 @@ public class CommandValidatorTest {
         assertTrue(commandValidator.validateDrawLineCommand("L 1 1 1 2", canvas));
     }
 
+    @Test(expected = NoCanvasException.class)
+    public void testValidateDrawLineCommandNoCanvas() throws Exception {
+        assertTrue(commandValidator.validateDrawLineCommand("L 1 1 20 20", null));
+    }
+
+    @Test(expected = InvalidCoordinatesException.class)
+    public void testValidateDrawLineCommandInvalidCoordinates() throws Exception {
+        assertTrue(commandValidator.validateDrawLineCommand("L 1 1 20 20", canvas));
+    }
+
+    @Test(expected = InvalidCoordinatesException.class)
+    public void testValidateDrawLineCommandDiagonalLine() throws Exception {
+        assertTrue(commandValidator.validateDrawLineCommand("L 1 1 15 15", canvas));
+    }
+
     @Test
     public void testValidateDrawRectangleCommand() throws Exception {
+        assertTrue(commandValidator.validateDrawRectangleCommand("R 1 1 5 5", canvas));
+    }
 
+    @Test(expected = InvalidCoordinatesException.class)
+    public void testValidateDrawRectangleCommandInvalidCoordinates() throws Exception {
+        assertTrue(commandValidator.validateDrawRectangleCommand("R 1 1 50 50", canvas));
+    }
+
+    @Test(expected = NoCanvasException.class)
+    public void testValidateDrawRectangleCommandNoCanvas() throws Exception {
+        assertTrue(commandValidator.validateDrawRectangleCommand("R 1 1 5 5", null));
     }
 
     @Test
     public void testValidateFillCommand() throws Exception {
-
+        assertTrue(commandValidator.validateFillCommand("B 1 1 .", canvas));
     }
+
+    @Test(expected = InvalidCommandFormatException.class)
+    public void testValidateFillCommandInvalidReplacingChar() throws Exception {
+        assertTrue(commandValidator.validateFillCommand("B 1 1 5454", canvas));
+    }
+
+    @Test(expected = InvalidCoordinatesException.class)
+    public void testValidateFillCommandInvalidCoordinates() throws Exception {
+        assertTrue(commandValidator.validateFillCommand("B 20 20 .", canvas));
+    }
+
+    @Test(expected = NoCanvasException.class)
+    public void testValidateFillCommandNoCanvas() throws Exception {
+        assertTrue(commandValidator.validateFillCommand("B 1 1 .", null));
+    }
+
 }
