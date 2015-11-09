@@ -18,7 +18,7 @@ import java.util.Scanner;
 @Component
 public class CommandValidator {
 
-    HashMap<String, Command> commands;
+    private final HashMap<String, Command> commands;
 
     @Autowired
     public CommandValidator(HashMap<String, Command> commands){

@@ -4,7 +4,7 @@ import lombok.Getter;
 
 
 /**
- * Enumartion that contains allowed commands and command formating
+ * Enumeration that contains allowed commands and command formating
  */
 @Getter
 public enum Command {

@@ -31,37 +31,27 @@ public class CommandExecutorTest {
     @Test
     public void testCreateCanvas() throws Exception {
         String createCanvasTestString =
-                "-----\n" +
-                "|   |\n" +
-                "|   |\n" +
-                "|   |\n" +
-                "-----\n";
-        commandExecutor.CreateCanvas("C 3 3");
+                "----------------------\n" +
+                "|                    |\n" +
+                "|                    |\n" +
+                "|                    |\n" +
+                "|                    |\n" +
+                "----------------------\n";
+        commandExecutor.CreateCanvas("C 20 4");
         assertEquals(commandExecutor.getCanvas().toString(), createCanvasTestString);
     }
 
     @Test
     public void testDrawLine() throws Exception {
         String testDrawLine =
-                "-----------------\n" +
-                "|               |\n" +
-                "|xxxxxxxxxxxxxxx|\n" +
-                "|               |\n" +
-                "|               |\n" +
-                "|               |\n" +
-                "|               |\n" +
-                "|               |\n" +
-                "|               |\n" +
-                "|               |\n" +
-                "|               |\n" +
-                "|               |\n" +
-                "|               |\n" +
-                "|               |\n" +
-                "|               |\n" +
-                "|               |\n" +
-                "-----------------\n";
-        commandExecutor.CreateCanvas("C 15 15");
-        commandExecutor.drawLine("L 1 2 15 2");
+                "----------------------\n" +
+                "|                    |\n" +
+                "|xxxxxx              |\n" +
+                "|                    |\n" +
+                "|                    |\n" +
+                "----------------------\n";
+        commandExecutor.CreateCanvas("C 20 4");
+        commandExecutor.drawLine("L 1 2 6 2");
         assertEquals(commandExecutor.getCanvas().toString(), testDrawLine);
     }
 
@@ -86,6 +76,21 @@ public class CommandExecutorTest {
                 "-----------------\n";
         commandExecutor.CreateCanvas("C 15 15");
         commandExecutor.drawLine("L 15 2 1 2");
+        assertEquals(commandExecutor.getCanvas().toString(), testDrawLine);
+    }
+
+    @Test
+    public void testDrawVerticalLine() throws Exception {
+        String testDrawLine =
+                "----------------------\n" +
+                "|                    |\n" +
+                "|xxxxxx              |\n" +
+                "|     x              |\n" +
+                "|     x              |\n" +
+                "----------------------\n";
+        commandExecutor.CreateCanvas("C 20 4");
+        commandExecutor.drawLine("L 1 2 6 2");
+        commandExecutor.drawLine("L 6 3 6 4");
         assertEquals(commandExecutor.getCanvas().toString(), testDrawLine);
     }
 
@@ -137,6 +142,23 @@ public class CommandExecutorTest {
                 "-----------------\n";
         commandExecutor.CreateCanvas("C 15 15");
         commandExecutor.drawRectangle("R 12 12 3 3");
+        assertEquals(commandExecutor.getCanvas().toString(), testDrawRectangle);
+
+    }
+
+    @Test
+    public void testDrawRectangleWithLines() throws Exception {
+        String testDrawRectangle =
+                "----------------------\n" +
+                "|               xxxxx|\n" +
+                "|xxxxxx         x   x|\n" +
+                "|     x         xxxxx|\n" +
+                "|     x              |\n" +
+                "----------------------\n";
+        commandExecutor.CreateCanvas("C 20 4");
+        commandExecutor.drawLine("L 1 2 6 2");
+        commandExecutor.drawLine("L 6 3 6 4");
+        commandExecutor.drawRectangle("R 16 1 20 3");
         assertEquals(commandExecutor.getCanvas().toString(), testDrawRectangle);
 
     }
@@ -268,6 +290,23 @@ public class CommandExecutorTest {
         commandExecutor.CreateCanvas("C 10 10");
         commandExecutor.drawRectangle("R 2 2 8 8");
         commandExecutor.fill("B 2 2 l");
+        assertEquals(commandExecutor.getCanvas().toString(), testFillRectangle);
+    }
+
+    @Test
+    public void testFillRectangleAndLines() throws Exception {
+        String testFillRectangle =
+                "----------------------\n" +
+                "|oooooooooooooooxxxxx|\n" +
+                "|xxxxxxooooooooox   x|\n" +
+                "|     xoooooooooxxxxx|\n" +
+                "|     xoooooooooooooo|\n" +
+                "----------------------\n";
+        commandExecutor.CreateCanvas("C 20 4");
+        commandExecutor.drawLine("L 1 2 6 2");
+        commandExecutor.drawLine("L 6 3 6 4");
+        commandExecutor.drawRectangle("R 16 1 20 3");
+        commandExecutor.fill("B 10 3 o");
         assertEquals(commandExecutor.getCanvas().toString(), testFillRectangle);
     }
 

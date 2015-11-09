@@ -1,4 +1,4 @@
-package com.app;
+package com.app.model;
 
 import com.app.model.Canvas;
 import com.app.model.Coordinate;
@@ -9,8 +9,7 @@ import static org.junit.Assert.assertEquals;
 
 public class CanvasTest {
 
-
-    Canvas canvas;
+    private Canvas canvas;
 
     @Before
     public void setUp() throws Exception {

@@ -11,8 +11,8 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class Coordinate implements Cloneable{
-    int x;
-    int y;
+    private int x;
+    private int y;
 
     public Coordinate (Coordinate coordinate){
         this.x = coordinate.getX();

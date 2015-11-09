@@ -7,7 +7,7 @@ import static org.junit.Assert.assertEquals;
 
 public class CoordinateTest {
 
-    Coordinate coordinate;
+    private Coordinate coordinate;
 
     @Before
     public void setUp() throws Exception {

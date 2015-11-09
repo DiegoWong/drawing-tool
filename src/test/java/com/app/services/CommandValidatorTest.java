@@ -1,6 +1,7 @@
 package com.app.services;
 
 import com.app.exceptions.InvalidCommandFormatException;
+import com.app.model.Canvas;
 import com.app.model.Command;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,7 +12,8 @@ import static org.junit.Assert.assertTrue;
 
 public class CommandValidatorTest {
 
-    CommandValidator commandValidator;
+    private CommandValidator commandValidator;
+    private Canvas canvas;
 
     @Before
     public void setUp() throws Exception {
@@ -20,6 +22,7 @@ public class CommandValidatorTest {
             commands.put(c.getValue(), c);
         }
         commandValidator = new CommandValidator(commands);
+        canvas = new Canvas(15, 15);
     }
 
     @Test
@@ -39,7 +42,7 @@ public class CommandValidatorTest {
 
     @Test
     public void testValidateDrawLineCommand() throws Exception {
-
+        assertTrue(commandValidator.validateDrawLineCommand("L 1 1 1 2", canvas));
     }
 
     @Test
